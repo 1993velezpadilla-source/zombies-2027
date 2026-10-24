@@ -95,11 +95,15 @@
   "target_sdk": "36",
   "apksigner_status": "PASS",
   "apksigner_output": "Verifies\nVerified using v1 scheme (JAR signing): false\nVerified using v2 scheme (APK Signature Scheme v2): true\nVerified using v3 scheme (APK Signature Scheme v3): false\nVerified using v3.1 scheme (APK Signature Scheme v3.1): false\nVerified using v3.2 scheme (APK Signature Scheme v3.2): false\nVerified using v4 scheme (APK Signature Scheme v4): false\nVerified for SourceStamp: false\nNumber of signers: 1\nV2 Signer: certificate DN: C=ZHN, ST=guangdong, L=guangzhou, O=gamesir, OU=gamesir, CN=gamesir\nV2 Signer: certificate SHA-256 digest: f6dc89251d2edf60c5721524d59f2dc6373825a73b1b81d031cafeeff31c9775\nV2 Signer: certificate SHA-1 digest: 1e3bdf63b4695a612a12280076dcccebd4194f15\nV2 Signer: certificate MD5 digest: c0d3494d5c43abc550266065929d022e\nV2 Signer: key algorithm: RSA\nV2 Signer: key size (bits): 2048\nV2 Signer: public key SHA-256 digest: 360a43dfa0297f6f512795206f8029767f470fe6b86d3f9d932788769d92864d\nV2 Signer: public key SHA-1 digest: bc306f1c15c259cb4482c10fdb067c99310971f6\nV2 Signer: public key MD5 digest: c43585480f61b1675689627e5fa18c39\n",
-  "signer_SHA256": [],
+  "signer_SHA256": [
+    "f6dc89251d2edf60c5721524d59f2dc6373825a73b1b81d031cafeeff31c9775"
+  ],
   "permissions_requiring_review": [
     "android.permission.CAMERA",
     "android.permission.MANAGE_EXTERNAL_STORAGE",
     "android.permission.RECORD_AUDIO",
     "android.permission.REQUEST_INSTALL_PACKAGES"
-  ]
+  ],
+  "signer_subject": "C=ZHN, ST=guangdong, L=guangzhou, O=gamesir, OU=gamesir, CN=gamesir",
+  "signature_scheme": "APK Signature Scheme v2"
 }
