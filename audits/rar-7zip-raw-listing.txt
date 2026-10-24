@@ -1,0 +1,14 @@
+
+7-Zip 23.01 (x64) : Copyright (c) 1999-2023 Igor Pavlov : 2023-06-20
+ 64-bit locale=C.UTF-8 Threads:4 OPEN_MAX:65536
+
+Scanning the drive for archives:
+1 file, 13143163842 bytes (13 GiB)
+
+Listing archive: /tmp/zombies-archive-audit/yiasuhd6hjxkhbeaAshcuxy2nmpsalk.rar
+
+
+Enter password (will not be echoed):
+
+
+Break signaled

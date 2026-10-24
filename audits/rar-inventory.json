@@ -1,0 +1,163 @@
+{
+  "filename": "yiasuhd6hjxkhbeaAshcuxy2nmpsalk.rar",
+  "bytes": 13143163842,
+  "sha256": "e094a78a769ad8566aa304b13c232427bb770035ece4f678250d9621670e55a3",
+  "kind": "RAR archive",
+  "inventory": [],
+  "header_hex": "526172211a07010050c408fa21040000",
+  "rar_magic_valid": true,
+  "listing_exit_code": 255,
+  "listing_status": "FAIL",
+  "listing_log_tail": "\n7-Zip 23.01 (x64) : Copyright (c) 1999-2023 Igor Pavlov : 2023-06-20\n 64-bit locale=C.UTF-8 Threads:4 OPEN_MAX:65536\n\nScanning the drive for archives:\n1 file, 13143163842 bytes (13 GiB)\n\nListing archive: /tmp/zombies-archive-audit/yiasuhd6hjxkhbeaAshcuxy2nmpsalk.rar\n\n\nEnter password (will not be echoed):\n\n\nBreak signaled\n",
+  "file_count": 0,
+  "folder_count": 0,
+  "uncompressed_file_bytes": 0,
+  "extensions": {},
+  "top_level_paths": {},
+  "largest_files": [],
+  "executables_and_scripts": [],
+  "potential_path_traversal": [],
+  "encryption_detected": false,
+  "parts": 11,
+  "part_verification": [
+    {
+      "name": "GameHub_6.3.1_0aca596ab937fcb1449dbb7d5700db83.apk",
+      "bytes": 67122098,
+      "sha256": "09b3e387205215ca0d10fe6881fff034939ae2c16a07b0ce470a48c6c51c6763",
+      "match": true
+    },
+    {
+      "name": "yiasuhd6hjxkhbeaAshcuxy2nmpsalk.rar.part001",
+      "bytes": 1300000000,
+      "sha256": "98cc7642213efc5b760ce127ba9732723f5e70d7d12fc349c898bcb5394718c1",
+      "match": true
+    },
+    {
+      "name": "yiasuhd6hjxkhbeaAshcuxy2nmpsalk.rar.part002",
+      "bytes": 1300000000,
+      "sha256": "31e81e6b764d27f56b16499c472a4283787dd6d830ec8f88d95a742c17fdd448",
+      "match": true
+    },
+    {
+      "name": "yiasuhd6hjxkhbeaAshcuxy2nmpsalk.rar.part003",
+      "bytes": 1300000000,
+      "sha256": "fde4a59e2add511c310ef7d678b38d0eefc39157f442c218a8c7daccbf687676",
+      "match": true
+    },
+    {
+      "name": "yiasuhd6hjxkhbeaAshcuxy2nmpsalk.rar.part004",
+      "bytes": 1300000000,
+      "sha256": "63c01e17d318602c5e386331b98bd43cb1f498e6a5b29349f6c2e343259bb0e7",
+      "match": true
+    },
+    {
+      "name": "yiasuhd6hjxkhbeaAshcuxy2nmpsalk.rar.part005",
+      "bytes": 1300000000,
+      "sha256": "6f2ed6566e87810d12a468664a105f55663f942b6990d0e767a294f734b1be5c",
+      "match": true
+    },
+    {
+      "name": "yiasuhd6hjxkhbeaAshcuxy2nmpsalk.rar.part006",
+      "bytes": 1300000000,
+      "sha256": "c7d32468d8002034730d59cd17d67d5305174c35984e3a43bb2988e30ad9b19e",
+      "match": true
+    },
+    {
+      "name": "yiasuhd6hjxkhbeaAshcuxy2nmpsalk.rar.part007",
+      "bytes": 1300000000,
+      "sha256": "63b8afcf53115d6d83400855956989745ccf751fac9dd4d9866ea8d3ba15f70e",
+      "match": true
+    },
+    {
+      "name": "yiasuhd6hjxkhbeaAshcuxy2nmpsalk.rar.part008",
+      "bytes": 1300000000,
+      "sha256": "bfff0bd44a26c20a512e2224b56c17c3f0901aabfcde5d21e22657cdd75fc363",
+      "match": true
+    },
+    {
+      "name": "yiasuhd6hjxkhbeaAshcuxy2nmpsalk.rar.part009",
+      "bytes": 1300000000,
+      "sha256": "d2abe97baddcd1b6665be26b27d995a864e61cc3bc8c7b8d5895ba3f18702a49",
+      "match": true
+    },
+    {
+      "name": "yiasuhd6hjxkhbeaAshcuxy2nmpsalk.rar.part010",
+      "bytes": 1300000000,
+      "sha256": "084bdc5ee2871eb310d476923ce24ece5d050f34ca1dee35400b43e95d92b50d",
+      "match": true
+    },
+    {
+      "name": "yiasuhd6hjxkhbeaAshcuxy2nmpsalk.rar.part011",
+      "bytes": 143163842,
+      "sha256": "c0faff242ff64d76c7d17adcc9289c6c9a369ae68ec5ccbc2e812ea7c6056ae6",
+      "match": true
+    }
+  ],
+  "manifest_original": {
+    "filename": "yiasuhd6hjxkhbeaAshcuxy2nmpsalk.rar",
+    "bytes": 13143163842,
+    "sha256": "e094a78a769ad8566aa304b13c232427bb770035ece4f678250d9621670e55a3",
+    "source": "https://store-eu-par-8.gofile.io/download/web/04bf67ff-a567-48e0-825f-5e3503dc9702/yiasuhd6hjxkhbeaAshcuxy2nmpsalk.rar",
+    "saved_path": "incoming/gofile/yiasuhd6hjxkhbeaAshcuxy2nmpsalk.rar",
+    "parts": [
+      {
+        "name": "yiasuhd6hjxkhbeaAshcuxy2nmpsalk.rar.part001",
+        "bytes": 1300000000,
+        "sha256": "98cc7642213efc5b760ce127ba9732723f5e70d7d12fc349c898bcb5394718c1"
+      },
+      {
+        "name": "yiasuhd6hjxkhbeaAshcuxy2nmpsalk.rar.part002",
+        "bytes": 1300000000,
+        "sha256": "31e81e6b764d27f56b16499c472a4283787dd6d830ec8f88d95a742c17fdd448"
+      },
+      {
+        "name": "yiasuhd6hjxkhbeaAshcuxy2nmpsalk.rar.part003",
+        "bytes": 1300000000,
+        "sha256": "fde4a59e2add511c310ef7d678b38d0eefc39157f442c218a8c7daccbf687676"
+      },
+      {
+        "name": "yiasuhd6hjxkhbeaAshcuxy2nmpsalk.rar.part004",
+        "bytes": 1300000000,
+        "sha256": "63c01e17d318602c5e386331b98bd43cb1f498e6a5b29349f6c2e343259bb0e7"
+      },
+      {
+        "name": "yiasuhd6hjxkhbeaAshcuxy2nmpsalk.rar.part005",
+        "bytes": 1300000000,
+        "sha256": "6f2ed6566e87810d12a468664a105f55663f942b6990d0e767a294f734b1be5c"
+      },
+      {
+        "name": "yiasuhd6hjxkhbeaAshcuxy2nmpsalk.rar.part006",
+        "bytes": 1300000000,
+        "sha256": "c7d32468d8002034730d59cd17d67d5305174c35984e3a43bb2988e30ad9b19e"
+      },
+      {
+        "name": "yiasuhd6hjxkhbeaAshcuxy2nmpsalk.rar.part007",
+        "bytes": 1300000000,
+        "sha256": "63b8afcf53115d6d83400855956989745ccf751fac9dd4d9866ea8d3ba15f70e"
+      },
+      {
+        "name": "yiasuhd6hjxkhbeaAshcuxy2nmpsalk.rar.part008",
+        "bytes": 1300000000,
+        "sha256": "bfff0bd44a26c20a512e2224b56c17c3f0901aabfcde5d21e22657cdd75fc363"
+      },
+      {
+        "name": "yiasuhd6hjxkhbeaAshcuxy2nmpsalk.rar.part009",
+        "bytes": 1300000000,
+        "sha256": "d2abe97baddcd1b6665be26b27d995a864e61cc3bc8c7b8d5895ba3f18702a49"
+      },
+      {
+        "name": "yiasuhd6hjxkhbeaAshcuxy2nmpsalk.rar.part010",
+        "bytes": 1300000000,
+        "sha256": "084bdc5ee2871eb310d476923ce24ece5d050f34ca1dee35400b43e95d92b50d"
+      },
+      {
+        "name": "yiasuhd6hjxkhbeaAshcuxy2nmpsalk.rar.part011",
+        "bytes": 143163842,
+        "sha256": "c0faff242ff64d76c7d17adcc9289c6c9a369ae68ec5ccbc2e812ea7c6056ae6"
+      }
+    ],
+    "assembly": "Concatenate the parts in ascending numeric order to reproduce the original file. Verify the original sha256."
+  },
+  "manifest_sha_match": true,
+  "manifest_size_match": true
+}
