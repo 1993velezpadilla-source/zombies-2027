@@ -1,4 +1,7 @@
 # Auditoría de descargas — ZOMBIES 2027
+
+> **ACTUALIZACIÓN — 24 de octubre de 2026:** Se probó la contraseña facilitada y funcionó para listar el RAR cifrado. La auditoría complementaria está en [rar-password-audit.md](rar-password-audit.md), con un inventario de **242 archivos y 9 carpetas**. El archivo contiene **Call of Duty: Modern Warfare 2** (no Call of Duty 4), con 121 archivos .ff, 32 .iwd y 57 .bik. Los archivos internos no se ejecutaron ni se comprobaron mediante CRC completo.
+
 **Ejecutada:** 24 de octubre de 2026, 03:17 UTC (23 de octubre, Puerto Rico)  
 **Repositorio:** 1993velezpadilla-source/zombies-2027  
 **Release:** requested-downloads-2026-10-23  
