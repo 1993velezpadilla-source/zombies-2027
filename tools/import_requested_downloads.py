@@ -68,6 +68,29 @@ def gofile():
     if not token:
         raise RuntimeError("Gofile guest API returned no account token")
     s.headers["Authorization"] = f"Bearer {token}"
+    # Gofile introduced a rotating X-Website-Token; without it, even public
+    # shares return HTTP 401. Use the same website-provided generator.
+    s.headers["X-BL"] = "en-US"
+    s.headers["Accept-Language"] = "en-US,en;q=0.9"
+    website_tokens = []
+    try:
+        from playwright.sync_api import sync_playwright
+        with sync_playwright() as pw:
+            browser = pw.chromium.launch(headless=True, args=["--no-sandbox"])
+            page = browser.new_page(user_agent=UA, locale="en-US")
+            page.goto(SOURCES["gofile"], wait_until="domcontentloaded", timeout=45000)
+            page.wait_for_function("typeof generateWT === 'function'", timeout=12000)
+            dynamic = page.evaluate("(accountToken) => generateWT(accountToken)", token)
+            if dynamic:
+                website_tokens.append(str(dynamic))
+            browser.close()
+    except Exception as exc:
+        print(f"Website WT generator was not available: {exc}", file=sys.stderr)
+    # Compatibility with the public 2026 Gofile WT-generation algorithm.
+    for salt in ("12af056dacea0b", "9844d94d963d30"):
+        for slot in (int(time.time()) // 14400, (int(time.time()) // 14400) - 1):
+            raw = f"{UA}::en-US::{token}::{slot}::{salt}"
+            website_tokens.append(hashlib.sha256(raw.encode()).hexdigest())
 
     visited = set()
 
@@ -75,10 +98,19 @@ def gofile():
         if code in visited:
             return
         visited.add(code)
-        response = s.get(f"https://api.gofile.io/contents/{code}",
-                         params={"pageSize": 1000, "page": 1},
-                         timeout=60)
-        response.raise_for_status()
+        response = None
+        for wt in website_tokens:
+            s.headers["X-Website-Token"] = wt
+            current = s.get(f"https://api.gofile.io/contents/{code}",
+                            params={"pageSize": 1000, "page": 1},
+                            timeout=60)
+            if current.status_code == 200:
+                response = current
+                break
+            if current.status_code == 429:
+                raise RuntimeError("Gofile rate limited the guest-account download")
+        if response is None:
+            raise RuntimeError(f"Gofile rejected all website tokens, final HTTP {current.status_code}")
         body = response.json()
         if body.get("status") != "ok":
             raise RuntimeError(f"Gofile public share access error: {str(body)[:350]}")
