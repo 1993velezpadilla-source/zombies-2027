@@ -200,17 +200,49 @@ def upload_to_repository():
     notes = "Original sources supplied by repo owner on 2026-10-23.\n\n"
     notes += "Includes only files actually retrieved; see manifest for SHA-256 checksums.\n"
     notes += "\n".join("- " + item["filename"] for item in RESULTS)
-    subprocess.run(["gh", "release", "view", tag, "-R", repo],
-                   stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
-                   check=False)
-    subprocess.run(["gh", "release", "create", tag, "-R", repo,
-                    "--title", "Requested reference downloads (2026-10-23)",
-                    "--notes", notes], check=False)
-    # Upload the manifest even for partial failures; GitHub Release assets are in the repo.
+    exists = subprocess.run(["gh", "release", "view", tag, "-R", repo],
+                            stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL).returncode == 0
+    if not exists:
+        subprocess.run(["gh", "release", "create", tag, "-R", repo,
+                        "--title", "Requested reference downloads (2026-10-23)",
+                        "--notes", notes], check=True)
+    # GitHub Releases rejects individual assets >= 2 GiB. Split these into
+    # numbered pieces; all pieces are uploaded to this repository's release.
+    limit = 1_300_000_000
     for info in RESULTS:
+        source = Path(info["saved_path"])
         try:
-            subprocess.run(["gh", "release", "upload", tag, info["saved_path"],
-                            "--clobber", "-R", repo], check=True)
+            if info["bytes"] <= limit:
+                subprocess.run(["gh", "release", "upload", tag, str(source),
+                                "--clobber", "-R", repo], check=True)
+                continue
+            info["parts"] = []
+            with source.open("rb") as stream:
+                number = 1
+                while True:
+                    part = source.with_name(source.name + f".part{number:03d}")
+                    part_hash = hashlib.sha256()
+                    part_size = 0
+                    with part.open("wb") as out:
+                        while part_size < limit:
+                            chunk = stream.read(min(8 * 1024 * 1024, limit - part_size))
+                            if not chunk:
+                                break
+                            out.write(chunk)
+                            part_hash.update(chunk)
+                            part_size += len(chunk)
+                    if not part_size:
+                        part.unlink()
+                        break
+                    subprocess.run(["gh", "release", "upload", tag, str(part),
+                                    "--clobber", "-R", repo], check=True)
+                    info["parts"].append({"name": part.name,
+                                          "bytes": part_size,
+                                          "sha256": part_hash.hexdigest()})
+                    part.unlink()
+                    print(f"Uploaded part {number} of {source.name} ({part_size} bytes)", flush=True)
+                    number += 1
+            info["assembly"] = "Concatenate the parts in ascending numeric order to reproduce the original file. Verify the original sha256."
         except Exception as exc:
             ERRORS.append(f"GitHub release upload of {info['filename']}: {exc}")
     manifest_path.write_text(json.dumps({"sources": SOURCES, "downloaded": RESULTS,
