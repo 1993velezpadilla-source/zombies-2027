@@ -1,0 +1,35 @@
+name: Import requested download files
+
+on:
+  push:
+    paths:
+      - ".github/workflows/import-requested-downloads.yml"
+      - "tools/import_requested_downloads.py"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: external-downloads
+  cancel-in-progress: false
+
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - name: Check out zombies-2027
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install download dependencies
+        run: |
+          python -m pip install --disable-pip-version-check requests playwright
+          python -m playwright install --with-deps chromium
+      - name: Fetch provided Gofile files and official GameHub Android package
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python tools/import_requested_downloads.py
