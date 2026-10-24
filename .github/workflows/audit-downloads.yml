@@ -1,0 +1,59 @@
+name: Audit downloaded files
+
+on:
+  push:
+    paths:
+      - ".github/workflows/audit-downloads.yml"
+      - "tools/audit_downloads.py"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: audit-downloads
+  cancel-in-progress: false
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Prepare disk and forensic listing tools
+        run: |
+          df -h /
+          sudo rm -rf /usr/share/dotnet /usr/local/share/powershell /opt/ghc /usr/local/lib/android/sdk/ndk
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq 7zip
+          python -m pip install -q requests
+          df -h /
+      - name: Audit all release assets, RAR inventory and APK signature
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python tools/audit_downloads.py
+      - name: Publish generated audit report to repository
+        if: always()
+        run: |
+          if test ! -f audits/download-audit-2026-10-24.md; then
+            echo "Audit report unavailable: inspect previous step logs"
+            exit 1
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add audits/download-audit-2026-10-24.md audits/apk-analysis.json audits/rar-inventory.json audits/rar-7zip-raw-listing.txt
+          git commit -m "Publish audited GameHub APK and Gofile RAR inventory"
+          git push
+      - name: Archive forensic audit files
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: downloaded-files-audit
+          path: audits/
+          if-no-files-found: warn
+          retention-days: 90
