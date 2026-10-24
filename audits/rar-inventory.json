@@ -7,17 +7,17 @@
   "header_hex": "526172211a07010050c408fa21040000",
   "rar_magic_valid": true,
   "listing_exit_code": 255,
-  "listing_status": "FAIL",
+  "listing_status": "PASSWORD_REQUIRED",
   "listing_log_tail": "\n7-Zip 23.01 (x64) : Copyright (c) 1999-2023 Igor Pavlov : 2023-06-20\n 64-bit locale=C.UTF-8 Threads:4 OPEN_MAX:65536\n\nScanning the drive for archives:\n1 file, 13143163842 bytes (13 GiB)\n\nListing archive: /tmp/zombies-archive-audit/yiasuhd6hjxkhbeaAshcuxy2nmpsalk.rar\n\n\nEnter password (will not be echoed):\n\n\nBreak signaled\n",
-  "file_count": 0,
-  "folder_count": 0,
-  "uncompressed_file_bytes": 0,
+  "file_count": null,
+  "folder_count": null,
+  "uncompressed_file_bytes": null,
   "extensions": {},
   "top_level_paths": {},
   "largest_files": [],
   "executables_and_scripts": [],
-  "potential_path_traversal": [],
-  "encryption_detected": false,
+  "potential_path_traversal": null,
+  "encryption_detected": "Probable: 7-Zip solicitó contraseña antes de mostrar nombres",
   "parts": 11,
   "part_verification": [
     {
@@ -159,5 +159,12 @@
     "assembly": "Concatenate the parts in ascending numeric order to reproduce the original file. Verify the original sha256."
   },
   "manifest_sha_match": true,
-  "manifest_size_match": true
+  "manifest_size_match": true,
+  "password_prompt_observed": true,
+  "inventory_accessible": false,
+  "technical_limitations": [
+    "7-Zip pidió contraseña y detuvo el listado; no se conocen nombres, número de archivos, tamaños internos ni extensiones.",
+    "No se comprobó el contenido descomprimido, su CRC individual ni la seguridad de ejecutables internos.",
+    "Cabecera RAR5 y SHA-256 del archivo original sí comprobados."
+  ]
 }
